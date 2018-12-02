@@ -163,7 +163,7 @@ class MatchupController extends Controller
         print_r($request->all());
         echo '</pre>';
         exit();*/
-        $matchup = App\Matchup::where('is_over', 0)
+        $matchup = App\Matchup::where('is_over', 0) //maç sadece henüz bitmemiş ise puan ekleyebilirsiniz o yüzden query kontrolü yapıyoruz
         ->findOrFail($request->matchup_id);
 
         foreach ($request->point as $member_id => $fields) {
