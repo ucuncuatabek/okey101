@@ -8,27 +8,27 @@ Merhaba!
 Unix'te iseniz "bash init.sh" yazıp enter'a basın. Bu sizin için vagrant klasörü altında homestead.yaml dosyası oluşturacaktır
 
 3- Homestead.yaml dosyasını şu şekilde düzenleyin
-        ---
-    ip: "192.168.10.10"
-    memory: 2048
-    cpus: 1
-    provider: virtualbox
 
-    authorize: ~/.ssh/id_rsa.pub
+        ip: "192.168.10.10"
+        memory: 2048
+        cpus: 1
+        provider: virtualbox
 
-    keys:
-        - ~/.ssh/id_rsa
+        authorize: ~/.ssh/id_rsa.pub
 
-    folders:
-        - map: ../
-          to: /home/vagrant/okey101
+        keys:
+            - ~/.ssh/id_rsa
 
-    sites:
-        - map: homestead.app
-          to: /home/vagrant/okey101/public
+        folders:
+            - map: ../
+              to: /home/vagrant/okey101
 
-    databases:
-        - okey
+        sites:
+            - map: homestead.app
+              to: /home/vagrant/okey101/public
+
+        databases:
+            - okey
 
 4 - homestead dosyasını düzenledikten sonra vagrant klasörünün altındaki "after.sh" dosyasını açın ve aşağıdaki gibi düzenleyin
 
