@@ -235,13 +235,9 @@ class MatchupController extends Controller
                             ->where('team_id',$team_id)
                             ->select('member_id')
                             ->get();
-
-            foreach($member_ids as $member) {
-                $member_id = $member->member_id;
-                App\Point::where("id",$member_id)->delete(); //points tablosundan memberların puanlarını siliyoruz
-            }
         }
-          App\Matchup::where("id",$id)->delete(); //Matchup tablosundan maçı siliyoruz
+        App\Point::where("matchup_id",$id)->delete(); //points tablosundan memberların puanlarını siliyoruz
+        App\Matchup::where("id",$id)->delete(); //Matchup tablosundan maçı siliyoruz
 
 
         return redirect('/matchup/list/1');
