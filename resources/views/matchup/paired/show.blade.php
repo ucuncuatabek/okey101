@@ -21,7 +21,7 @@
 @endsection
 
 @section('javascript')
-    <script src="https://code.highcharts.com/highcharts.src.js"></script>
+
     @if (App::isLocale('tr'))
         <script src="{{ asset('js/validate/messages_tr.js') }}"></script>
     @endif
