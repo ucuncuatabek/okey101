@@ -217,7 +217,15 @@ class MatchupController extends Controller
         return redirect('/matchup/list/1');
     }
     public function deleteMatch($id) {
-        $matchup = App\Matchup::where('is_over', 1)
-        ->findOrFail($request->matchup_id);
+       /* $matchup = App\Matchup::where('is_over', 1)
+        ->findOrFail($request->matchup_id);*/
+
+        /*$assignables = DB::table('assignables')->where("matchup_id",$id);
+        print_ra($assignables);*/
+       /* assignables ın assignable_id lerini foreach ile dönüp tek tek member_teamden memberları bul
+           memberları sil sonra bulduğun idleri members tablosundan sil
+           bir de assignable_id leri teams tablosundan sil
+            DELETE FROM homestead.assignables where matchup_id = 3;
+            DELETE FROM homestead.points where matchup_id = 3;*/
     }
 }

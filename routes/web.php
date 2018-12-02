@@ -22,6 +22,8 @@ Route::get('/matchup/edit/{id}', 'MatchupController@edit');
 Route::get('/matchup/view/{id}', 'MatchupController@view');
 Route::get('/matchup/show/{id}', 'MatchupController@show');
 Route::get('/matchup/endMatch/{id}', 'MatchupController@endMatch');
+Route::get('/matchup/deleteMatch/{id}', 'MatchupController@deleteMatch');
+
 
 Route::post('/matchup/store', 'MatchupController@store');
 Route::post('/matchup/addPoint', 'MatchupController@addPoint');

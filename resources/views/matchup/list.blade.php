@@ -16,20 +16,29 @@
                         </div>
                         <div class="col-md-offset-3 col-md-6">
                             @foreach ($matchups as $matchup)
-                                <a class="btn btn-success btn-lg btn-block"
-                                href="/matchup/{{ $status == 'Aktif' ? 'edit' : 'view' }}/{{ $matchup->id }}">
+                            <div class = "  {{ $status !== 'Aktif' ? 'deletable-team' : ''}}">
+                                <a class="btn btn-success btn-lg btn-block  {{ $status !== 'Aktif' ? 'view-big-button' : '' }}" href="/matchup/{{ $status == 'Aktif' ? 'edit' : 'view' }}/{{ $matchup->id }} ">
                                     <div class="row">
-                                        <div class="col-md-5">
+                                        <div class="col-md-{{ $status == 'Aktif' ? '5' : '3' }} {{ $status !== 'Aktif' ? 'team-name col-md-offset-2' : ''}}">
                                             {{ $matchup->teams{0}->name }}
                                         </div>
-                                        <div class="col-md-2">
+                                        <div class="col-md-2 {{ $status !== 'Aktif' ? 'versus' : ''}}">
                                             VS
                                         </div>
-                                        <div class="col-md-5">
+                                        <div class="col-md-{{ $status == 'Aktif' ? '5' : '3' }} {{ $status !== 'Aktif' ? 'team-name' : ''}}">
                                             {{ $matchup->teams{1}->name }}
                                         </div>
                                     </div>
                                 </a>
+                                @if($status !== "Aktif")
+                                    <div class="pull-right delete">
+                                        <a role="button" href = "/matchup/deleteMatch/{{ $matchup->id }}" class="pull-right btn btn-danger delete-match">
+                                            <i class="fa fa-times" aria-hidden="true"></i>
+                                            SİL
+                                        </a>
+                                    </div>
+                                @endif
+                            </div>
                             @endforeach
                         </div>
                     </div>
@@ -55,6 +64,31 @@
     <style type="text/css" media="screen">
         .alert {
             margin-top: 20px;
+        }
+        .team-name{
+            margin-top : 6px;
+        }
+        .versus{
+            top:7px;
+        }
+        .view-big-button {
+            display:inline-block;
+            width:82%;
+            border-top-right-radius: 0px;
+            border-bottom-right-radius: 0px;
+        }
+        .delete-match {
+            height:51px;
+            width:76px;
+            padding:14px;
+            border-top-left-radius: 0px;
+            border-bottom-left-radius: 0px;
+        }
+        .deletable-team{
+            margin-bottom:5px;
+        }
+        .delete{
+             width:72px;
         }
     </style>
 @endsection
