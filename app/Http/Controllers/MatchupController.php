@@ -216,4 +216,8 @@ class MatchupController extends Controller
 
         return redirect('/matchup/list/1');
     }
+    public function deleteMatch($id) {
+        $matchup = App\Matchup::where('is_over', 1)
+        ->findOrFail($request->matchup_id);
+    }
 }

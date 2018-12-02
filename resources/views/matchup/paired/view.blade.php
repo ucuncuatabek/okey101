@@ -88,42 +88,6 @@
                                                                         </div>
                                                                     </div>
                                                                 </div>
-                                                                {{-- yeni eklenecek olan puan için input fieldı --}}
-
-                                                                <div class="row" id="additionals{{ $member->id }}" style="display:none">
-                                                                    <div class="form-group">
-                                                                        <label class="col-md-12">Ceza Sayısı</label>
-                                                                        <div class="col-md-12">
-                                                                            <div class="input-group">
-                                                                                {{-- ceza azaltma butonu --}}
-                                                                                <span class="input-group-btn">
-                                                                                    <button class="btn btn-danger change-penalty decrement" data-field="#penalty{{ $member->id }}" type="button">
-                                                                                        <i class="fa fa-minus"></i>
-                                                                                    </button>
-                                                                                </span>
-
-                                                                                {{-- ceza fieldı --}}
-                                                                                <input class="form-control" id="penalty{{ $member->id }}" placeholder="Ceza Sayısı" value="0" type="number" name="point[{{ $member->id }}][penalty]">
-
-                                                                                {{-- ceza arttırma butonu --}}
-                                                                                <span class="input-group-btn">
-                                                                                    <button class="btn btn-success change-penalty increment" data-field="#penalty{{ $member->id }}" type="button">
-                                                                                        <i class="fa fa-plus"></i>
-                                                                                    </button>
-                                                                                </span>
-                                                                            </div>
-                                                                        </div>
-                                                                    </div>
-                                                                    <div class="form-group">
-                                                                        <div class="col-md-12">
-                                                                            <div class="checkbox">
-                                                                                <label>
-                                                                                    <input value="1" type="checkbox" name="point[{{ $member->id }}][doubles]">Çifte Gidiyor
-                                                                                </label>
-                                                                            </div>
-                                                                        </div>
-                                                                    </div>
-                                                                </div>
                                                             </div>
                                                         @endforeach
                                                     </div>
@@ -175,35 +139,13 @@
 
 @section('css')
     <style type="text/css" media="screen">
-        @-webkit-keyframes error-shake {
-            from {-webkit-transform:translateX(-5px)} to {-webkit-transform:translateX(5px)}
-        }
-        @-ms-keyframes error-shake {
-            from {-ms-transform:translateX(-5px)} to {-ms-transform:translateX(5px)}
-        }
-        @-moz-keyframes error-shake {
-            from {-moz-transform:translateX(-5px)} to {-moz-transform:translateX(5px)}
-        }
-        @-o-keyframes error-shake {
-            from {-o-transform:translateX(-5px)} to {-o-transform:translateX(5px)}
-        }
-        @keyframes error-shake {
-            from{transform:translateX(-5px)} to {transform:translateX(5px)}
-        }
 
-        .error {
-            -webkit-animation: error-shake 50ms linear 10 alternate;
-            -moz-animation: error-shake 50ms linear 10 alternate;
-            -o-animation: error-shake 50ms linear 10 alternate;
-            -ms-animation: error-shake 50ms linear 10 alternate;
-            animation: error-shake 50ms linear 10 alternate;
-        }
         .help-block {
             font-weight: bold;
         }
-        /*.points {
-            margin-bottom: 15px;
-        }*/
+        input{
+             border-radius: 3px 3px 3px 3px !important;
+        }
         .form-group {
             margin-left: 0 !important;
             margin-right: 0 !important;
@@ -221,11 +163,6 @@
         .panel-heading-collapse {
             cursor: pointer;
         }
-        /*.team-div {
-            border: 1px solid transparent;
-            border-radius: 4px;
-            border-color: black;
-        }*/
         .additionals {
             margin-top: 10px;
         }
@@ -237,9 +174,6 @@
         .panel-heading-collapse {
             position: relative;
         }
-        .note {
-            resize: vertical;
-            min-height: 50px;
-        }
+
     </style>
 @endsection

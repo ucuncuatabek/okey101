@@ -30,29 +30,6 @@
 
 @section('css')
     <style type="text/css" media="screen">
-        @-webkit-keyframes error-shake {
-            from {-webkit-transform:translateX(-5px)} to {-webkit-transform:translateX(5px)}
-        }
-        @-ms-keyframes error-shake {
-            from {-ms-transform:translateX(-5px)} to {-ms-transform:translateX(5px)}
-        }
-        @-moz-keyframes error-shake {
-            from {-moz-transform:translateX(-5px)} to {-moz-transform:translateX(5px)}
-        }
-        @-o-keyframes error-shake {
-            from {-o-transform:translateX(-5px)} to {-o-transform:translateX(5px)}
-        }
-        @keyframes error-shake {
-            from{transform:translateX(-5px)} to {transform:translateX(5px)}
-        }
-
-        #teamModal.error {
-            -webkit-animation: error-shake 50ms linear 10 alternate;
-            -moz-animation: error-shake 50ms linear 10 alternate;
-            -o-animation: error-shake 50ms linear 10 alternate;
-            -ms-animation: error-shake 50ms linear 10 alternate;
-            animation: error-shake 50ms linear 10 alternate;
-        }
         .help-block {
             font-weight: bold;
         }
