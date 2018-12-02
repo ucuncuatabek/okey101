@@ -218,31 +218,31 @@ class MatchupController extends Controller
     }
     public function deleteMatch($id) {
         $matchup = App\Matchup::where('is_over', 1)
-        ->findOrFail($id);
-        if(count($matchup) > 0) {
-            $assignables = DB::table('assignables')
-                                ->where("matchup_id",$id)
-                                ->select("assignable_id")
-                                ->get();
+        ->findOrFail($id); // maç bulunamazsa sayfaya fail atıyoruz
 
-            DB::table('assignables')
-                ->where("matchup_id",$id)
-                ->delete();
+        $assignables = DB::table('assignables')
+                            ->where("matchup_id",$id)
+                            ->select("assignable_id")
+                            ->get();
 
-            foreach ($assignables as $team) {
-                $team_id = $team->assignable_id;
-                $member_ids = DB::table('member_team')
-                                ->where('team_id',$team_id["assignable_id"])
-                                ->select('member_id')
-                                ->get();
+        DB::table('assignables')
+            ->where("matchup_id",$id)
+            ->delete();
 
-                foreach($member_ids as $member) {
-                    $member_id = $member->member_id;
-                    App\Point::where("id",$member_id)->delete(); //points tablosundan memberların puanlarını siliyoruz
-                }
+        foreach ($assignables as $team) {
+            $team_id = $team->assignable_id;
+            $member_ids = DB::table('member_team')
+                            ->where('team_id',$team_id["assignable_id"])
+                            ->select('member_id')
+                            ->get();
+
+            foreach($member_ids as $member) {
+                $member_id = $member->member_id;
+                App\Point::where("id",$member_id)->delete(); //points tablosundan memberların puanlarını siliyoruz
             }
-            App\Matchup::where("id",$id)->delete(); //Matchup tablosundan maçı siliyoruz
         }
+        App\Matchup::where("id",$id)->delete(); //Matchup tablosundan maçı siliyoruz
+
 
         return redirect('/matchup/list/1');
     }
