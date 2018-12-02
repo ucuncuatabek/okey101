@@ -25,7 +25,7 @@ class MatchupController extends Controller
         return view('matchup.paired.create');
     }
 
-    public function createUnpaired()
+    public function createUnpaired() //henüz eklenmedi
     {
         return view('matchup.unpaired.create');
     }
@@ -86,22 +86,22 @@ class MatchupController extends Controller
 
     public function list($status)
     {
-        if (!in_array($status, ['0', '1'])) {
+        if (!in_array($status, ['0', '1'])) {  // is_over değeri 0 veya 1 değilse error veriyoruz.
             abort(404);
         }
 
-        $matchups = \App\Matchup::with('teams')->where([
+        $matchups = \App\Matchup::with('teams')->where([  // is_over değerine göre maçları buluyoruz
             ['is_over', $status],
             ['user_id', Auth::user()->id]
         ])->get();
 
         $status = $status ? 'Geçmiş' : 'Aktif';
 
-        return view('matchup.list', compact('matchups', 'status'));
+        return view('matchup.list', compact('matchups', 'status')); // list dosyasının içine matchup arrayini ve status değişkenini atarak çağırıyoruz
     }
 
     public function listComplete() {
-        $complete_matchups = \App\Matchup::with('teams')->where([
+        $complete_matchups = \App\Matchup::with('teams')->where([ //finding the list of completed matches from database
             ['is_over', 1],
             ['user_id', Auth::user()->id]
         ])->get();
@@ -218,7 +218,7 @@ class MatchupController extends Controller
     }
 
     public function editPoint(Request $request)
-    {
+    {  //kullanıcıdan gelen değişkenlerin doğruluk kontrolü
         $this->validate($request, [
             'id'    => 'required|numeric',
             'point' => 'required|numeric',
@@ -231,7 +231,7 @@ class MatchupController extends Controller
 
         return response()->json(array('success' => true));
     }
-    public function endMatch($id) {
+    public function endMatch($id) { //maçın database deki is_over değişkenini 1 e eşitleyerek maçı bitiriyoruz
         $matchup = App\Matchup::where('is_over',0)
                 ->findOrFail($id);
 

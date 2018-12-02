@@ -45,4 +45,12 @@ Unix'te iseniz "bash init.sh" yazıp enter'a basın. Bu sizin için vagrant klas
         echo "Seederlar Çalıştırıldı *-*"
 
 5 - Bu işlemlerden sonra terminalden  "cd Desktop/Projeler/okey101/vagrant" klasörüne gidip "vagrant up" yazarak projeyi çalıştırabilirsiniz.
+6. Browserınızın url barına "192.168.10.10" yazarak siteye ulaşabilirsiniz.
 
+7 - Siteyi açtıktan sonra öncelikle sağ üstten Kayıt ol'a basın, Herhangi bir sahte email adresi ile hesap açmanız yeterli olacaktır.
+8 - Kayıt olduktan sonra Karşınıza Yeni Eşli Maç Oluşturma tablosu çıkacak, Gerekli inpuları doldurup maçı başlatın
+9 - Maçı başlata bastıktan sonra önünüze çıkan tabloda Puan girme ve not yazma inputları göreceksiniz. Not kısmı Oyunun o Eliyle ilgili herhangi bir detayını akılda tutmak için kullanılabilir.
+    Puan kısmına kullanıcının o el elde ettiği puani girin. Ek özellikler butonuna tıkladığınızda açılan akordiyon menüde 2 tane input göreceksiniz ceza kısmına oyuncunun o el yaptığı hata sayısını girin.
+    Oyuncu çifte gidiyor ise, "çifte gidiyor" kutucuğuna tıklayabilirsiniz. İşleminiz bittikten sonra Tablonun sağ alt kısmında Güncelle butonuna basarak işlemi tamamlayabilirsiniz.
+10 - Oyunculara puan girişi yaptıktan sonra hatalı işlem yaptığınızı düşünüyorsanız, oyuncunun adına tıklayarak oyuncunun geçmiş puanlar listesine erişebilir ve geçmiş puanlarında değişiklik yapabilirsiniz.
+11 - Maçı bitirmek istediğinizde sol alttan maçı bitir tuşuna basabilirsiniz. Bitirilen maçlar üzerinde herhangi bir düzenleme uygulanamaz.

@@ -17,7 +17,7 @@
                                     <h2>
                                         @if ($team_sums[$matchup->teams{0}->id]->sum > $team_sums[$matchup->teams{1}->id]->sum)
                                             <strong>
-                                                {{ $matchup->teams{0}->name }}
+                                                {{ $matchup->teams{1}->name }}
                                             </strong>
                                             takımı,
                                             <strong>
@@ -26,7 +26,7 @@
                                             farkla önde!
                                         @elseif ($team_sums[$matchup->teams{1}->id]->sum > $team_sums[$matchup->teams{0}->id]->sum)
                                             <strong>
-                                                {{ $matchup->teams{1}->name }}
+                                                {{ $matchup->teams{0}->name }}
                                             </strong>
                                             takımı,
                                             <strong>
