@@ -57,9 +57,33 @@
 {{-- @section('javascript')
     @if (App::isLocale('tr'))
         <script src="{{ asset('js/validate/messages_tr.js') }}"></script>
-    @endif
-@endsection --}}
 
+    @endif
+ --}}
+@section('javascript')
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/jquery-confirm/3.3.0/jquery-confirm.min.css">
+<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery-confirm/3.3.0/jquery-confirm.min.js"></script>
+    <script>
+        $(".delete-match").confirm({
+            title:"Maçı silmek istediğinizden emin misiniz?",
+            content:"Silinen maçlar geri alınamaz!",
+            buttons:{
+                formSubmit: {
+                    text: 'SİL',
+                    content:'',
+                    btnClass: 'btn-danger delete-confirm',
+                    action: function() {
+                        location.href = this.$target.attr('href');
+                    }
+                },
+                cancel:  {
+                    text:"Vazgeç"
+                },
+            }
+        });
+
+    </script>
+@endsection
 @section('css')
     <style type="text/css" media="screen">
         .alert {
@@ -91,4 +115,5 @@
              width:72px;
         }
     </style>
+
 @endsection
