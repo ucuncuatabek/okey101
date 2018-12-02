@@ -26,7 +26,7 @@ $(document).ready(function() {
         var new_point = $input.val();
         var old_point = $input.data('val');
 
-        if (old_point != new_point) {
+        if (old_point != new_point) {  // aktif maçlarda geçmiş puanı değiştirdikten sonra kayıt tuşuna basında matchup editpoint fonksiyonu çağırılıyor
             $.post('/matchup/editPoint', {'point': new_point,'id': id}, function (data) {
                 alert('Kayıt başarılı.');
             }).fail(function(data) {
@@ -39,7 +39,7 @@ $(document).ready(function() {
         }
     });
 
-    $(document).on('click', '.edit-point', function() {
+    $(document).on('click', '.edit-point', function() { // aktif maçlarda kişinin geçmiş skorlarından kalem tuşuna basılan input enabled oluyor
         $(this).toggle().siblings('.input-group-addon').toggle();
         $(this).siblings('input').removeAttr('disabled');
     });
