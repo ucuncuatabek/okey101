@@ -1,0 +1,6 @@
+/vendor
+/.vagrant
+phpunit.xml
+/after.sh
+/aliases
+/Homestead.yaml
