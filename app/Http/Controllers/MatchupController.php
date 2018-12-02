@@ -220,12 +220,34 @@ class MatchupController extends Controller
        /* $matchup = App\Matchup::where('is_over', 1)
         ->findOrFail($request->matchup_id);*/
 
-        /*$assignables = DB::table('assignables')->where("matchup_id",$id);
-        print_ra($assignables);*/
+        $assignables = DB::table('assignables')
+                            ->where("matchup_id",$id)
+                            ->select("assignable_id")
+                            ->get();
+
+        DB::table('assignables')
+            ->where("matchup_id",$id)
+            ->delete();
+
+        foreach ($assignables as $team) {
+            $team_id = $team->assignable_id;
+            $member_ids = DB::table('member_team')
+                            ->where('team_id',$team_id["assignable_id"])
+                            ->select('member_id')
+                            ->get();
+           /* DB::table('member_team')
+                ->where('team_id',$team_id["assignable_id"])
+                ->delete();*/
+            foreach($member_ids as $member) {
+                $member_id = $member->member_id;
+                App\Point::where("id",$member_id)->delete(); //points tablosundan memberların puanlarını siliyoruz
+            }
+        }
+        App\Matchup::where("id",$id)->delete();
+
        /* assignables ın assignable_id lerini foreach ile dönüp tek tek member_teamden memberları bul
            memberları sil sonra bulduğun idleri members tablosundan sil
-           bir de assignable_id leri teams tablosundan sil
-            DELETE FROM homestead.assignables where matchup_id = 3;
-            DELETE FROM homestead.points where matchup_id = 3;*/
+           bir de assignable_id leri teams tablosundan sil*/
+        return redirect('/matchup/list/1');
     }
 }
