@@ -232,7 +232,7 @@ class MatchupController extends Controller
         foreach ($assignables as $team) {
             $team_id = $team->assignable_id;
             $member_ids = DB::table('member_team')
-                            ->where('team_id',$team_id["assignable_id"])
+                            ->where('team_id',$team_id)
                             ->select('member_id')
                             ->get();
 
@@ -241,7 +241,7 @@ class MatchupController extends Controller
                 App\Point::where("id",$member_id)->delete(); //points tablosundan memberların puanlarını siliyoruz
             }
         }
-        App\Matchup::where("id",$id)->delete(); //Matchup tablosundan maçı siliyoruz
+          App\Matchup::where("id",$id)->delete(); //Matchup tablosundan maçı siliyoruz
 
 
         return redirect('/matchup/list/1');
