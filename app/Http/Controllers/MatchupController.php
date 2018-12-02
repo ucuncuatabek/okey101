@@ -71,19 +71,6 @@ class MatchupController extends Controller
         }
     }
 
-    protected function storePaired()
-    {
-    }
-
-    protected function storeUnpaired()
-    {
-    }
-
-    public function show($id)
-    {
-
-    }
-
     public function list($status)
     {
         if (!in_array($status, ['0', '1'])) {  // is_over değeri 0 veya 1 değilse error veriyoruz.
@@ -100,22 +87,11 @@ class MatchupController extends Controller
         return view('matchup.list', compact('matchups', 'status')); // list dosyasının içine matchup arrayini ve status değişkenini atarak çağırıyoruz
     }
 
-    public function listComplete() {
-        $complete_matchups = \App\Matchup::with('teams')->where([ //finding the list of completed matches from database
-            ['is_over', 1],
-            ['user_id', Auth::user()->id]
-        ])->get();
-
-        $incomplete_matchups = null;
-
-        return view('home', compact('complete_matchups', 'incomplete_matchups'));
-    }
-
-    public function view($id) {
+    public function view($id) { //Geçmiş maçları görüntülemekk için is_over değerini 1 olarak yolluyoruz
         return view('matchup.paired.view', $this->getMatchupData($id, 1));
     }
 
-    public function edit($id)
+    public function edit($id) //aktif maçları görüntülemek için is_over değerini 0 olarak yolluyoruz
     {
         return view('matchup.paired.edit', $this->getMatchupData($id, 0));
     }
