@@ -15,7 +15,7 @@ class Point extends Model
         return $this->belongsTo('App\Matchup');
     }
 
-    public function members()
+    public function member()
     {
         return $this->belongsTo('App\Member');
     }
