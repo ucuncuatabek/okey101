@@ -11,14 +11,14 @@ keys:
 
 folders:
     - map: ~/Code
-      to: /home/vagrant/Code
+      to: /home/vagrant/okey101
 
 sites:
-    - map: homestead.app
-      to: /home/vagrant/Code/Laravel/public
+    - map: okey.test
+      to: /home/vagrant/okey101/okey101/public
 
 databases:
-    - homestead
+    - okey101
 
 # blackfire:
 #     - id: foo

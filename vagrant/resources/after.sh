@@ -1,17 +1,16 @@
-#!/bin/sh
+cd okey101
 
-# If you would like to do some extra provisioning you may
-# add any commands you wish to this file and they will
-# be run after the Homestead machine is provisioned.
-
-cd projects/okey
 composer install
-echo "Composer Çalıştırıldı ^-^"
+echo "Composer Çalıştırıldı"
+
 cp -n .env.example .env
-echo ".env Dosyası Oluşturuldu :3"
+echo ".env Dosyası Oluşturuldu"
+
 php artisan key:generate
-echo "App Key Oluşturuldu (・ω・)"
+echo "App Key Oluşturuldu"
+
 php artisan migrate
-echo "Migrationlar Çalıştırıldı ^o^"
+echo "Migrationlar Çalıştırıldı"
+
 php artisan db:seed
-echo "Seederlar Çalıştırıldı *-*"
+echo "Seederlar Çalıştırıldı"
