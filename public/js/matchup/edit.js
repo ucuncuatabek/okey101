@@ -21,18 +21,21 @@ $(document).ready(function() {
 
     $(document).on('click', '.save-point', function() {
         $siblings     = $(this).siblings();
+
         var $input    = $($siblings[0]).prop('disabled', 'disabled');
         var id        = $input.attr('id');
         var new_point = $input.val();
         var old_point = $input.data('val');
 
-        if (old_point != new_point) {  // aktif maçlarda geçmiş puanı değiştirdikten sonra kayıt tuşuna basında matchup editpoint fonksiyonu çağırılıyor
+        // aktif maçlarda geçmiş puanı değiştirdikten sonra kayıt tuşuna
+        // basınca matchup editpoint fonksiyonu çağırılıyor
+        if (old_point != new_point) {
             $.post('/matchup/editPoint', {'point': new_point,'id': id}, function (data) {
                 alert('Kayıt başarılı.');
             }).fail(function(data) {
                 alert('Puan girilmesi zorunludur');
                 $input.val(old_point);
-            })
+            });
 
             $(this).toggle();
             $($siblings[1]).toggle();

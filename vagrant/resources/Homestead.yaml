@@ -10,12 +10,12 @@ keys:
     - ~/.ssh/id_rsa
 
 folders:
-    - map: ~/Code
+    - map: ../
       to: /home/vagrant/okey101
 
 sites:
     - map: okey.test
-      to: /home/vagrant/okey101/okey101/public
+      to: /home/vagrant/okey101/public
 
 databases:
     - okey101

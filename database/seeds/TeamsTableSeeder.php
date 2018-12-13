@@ -13,12 +13,12 @@ class TeamsTableSeeder extends Seeder
     {
         DB::table('teams')->insert([
     		[
-	    		'name'  => 'Çömezler',
+	    		'name'  => 'BEST',
 	    		'created_at' => date("Y-m-d H:i:s"),
 	    		'updated_at' => date("Y-m-d H:i:s"),
 	    	],
 	    	[
-	    		'name'  => 'Ustalar',
+	    		'name'  => 'WORST',
 	    		'created_at' => date("Y-m-d H:i:s"),
 	    		'updated_at' => date("Y-m-d H:i:s"),
 	    	],
